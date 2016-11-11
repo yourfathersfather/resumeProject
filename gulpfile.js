@@ -30,7 +30,6 @@ var sequence = require('gulp-watch-sequence');
 //压缩html
 var minifyHTML = require('gulp-minify-html');
 
-
 gulp.task('webserver', function() {
   gulp.src('www')
     .pipe(webserver({
@@ -71,6 +70,12 @@ gulp.task('webserver', function() {
               res.end(data);
             });
             return;
+          case '/api/my':
+            res.setHeader('Content-Type','application/json');   
+            fs.readFile('mock/my.json','utf-8',function(err,data){
+              res.end(data);
+            });
+            return;  
           default:
           ;
         }
@@ -112,6 +117,16 @@ gulp.task('packjs',function(){
 var cssDistFiles = ['www/css/index.css'];
 var jsDistFiles = ['www/js/index.js'];
 
+//复制图片
+gulp.task('copy-images',function(){
+gulp.src('./src/images/**/*')
+	.pipe(gulp.dest('./www/images'))
+})
+//复制iconfont
+gulp.task('copy-iconfont',function(){
+gulp.src('./src/font_l8z7akp9hdezsemi/**/*')
+	.pipe(gulp.dest('./www/font_l8z7akp9hdezsemi'))
+})
 
 
 //对html文件的版本内容的替换
@@ -124,7 +139,9 @@ gulp.task('html',function(){
 //设置监控
 gulp.task('watch',function(){
   gulp.watch('./src/index.html',['copy-index']);
-
+	gulp.watch('src/images/*',['copy-images']);
+	gulp.watch('src/font_l8z7akp9hdezsemi/*',['copy-iconfont']);
+	
   var queue = sequence(300);
   watch('src/scripts/**/*.js',{
     name:'JS',

@@ -1,3 +1,4 @@
+/*iscroll部分*/
 #footer{
 	display: flex;
 	justify-content: center;
@@ -6,37 +7,172 @@
 		flex: 1;
 		text-align: center;
 		color: #FFFFFF;
+		font-family: "微软雅黑";
+		font-size: 16px;
 	}
 }
 #header{
 	display: flex;
 	justify-content: space-between;
-	padding: 10px 10px;
+	font-family: "微软雅黑";
 	p{
-		line-height: 0px;
+		height: 100%;
+		margin: 0;
+		box-sizing: border-box;
+		display: block;
+		padding: 0;
+		padding: 0 0.1rem;
+		button{
+			background: #444;
+			border-radius:0.1rem ;
+			color: #fff;
+			border: 0;
+			font-size: 25px;
+			height: 60%;
+		}
 	}
-	button{
-		background: darkred;
-		border-radius:10px ;
-		border: 1px solid beige;
-		color: #fff;
+	
+}
+#sec{
+	overflow: hidden;
+	li{
+		overflow: hidden;
+		padding: 0.1rem;
 	}
 }
-#sec>li{
-	
-	overflow: hidden;
-	display: block;
-	height: auto;
+/*技能部分*/
+#sec .li_jn{
+	display: flex;
+	div{
+		flex: 2;
+		padding: 5%;
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
 	dl{
-		overflow:hidden;
-		dt{
+		display: block;
+		flex: 5;
+		padding: 0;
+		font-family: "微软雅黑";
+		color: gray;
+		font-size: 12px;
+		dt:nth-of-type(1){
+			font-weight: bold;
+			font-size: 14px;
+			color: #333;
+		}
+		dt:nth-of-type(1){
+			font-weight: bold;
+			font-size: 14px;
+		}
+		
+	}
+	
+}
+/*项目部分*/
+#sec .li_xm{
+	div{
+		display: flex;
+		padding: 0.1rem;
+		background: #fff;
+		font-size: 12px;
+		box-shadow: 0px 0px 1px black;
+		font-family: "微软雅黑";
+		color: gray;
+		div{
+			box-shadow:none;
+			flex: 1;
+			padding: 0;
 			display: block;
+			img{
+				width: 100%;
+				box-shadow: none;
+			}
+		}
+		dl{
+			flex: 5;
+			padding: 0;
+			display: block;
+			box-shadow: none;
+			padding-left:0.1rem ;
+			dt:nth-of-type(1){
+				font-size: 14px;
+				font-weight: bold;
+				color: #333;
+			}
+			dt:nth-of-type(2){
+				text-indent: -0.4rem;
+				padding-left: 0.45rem;
+			}
+		}
+	}
+	
+	dl{
+		box-shadow: 0px 0px 1px black;
+		margin: 0;
+		background: #fff;
+		padding:10px;
+		display: block;
+		font-size: 12px;
+		box-shadow: 0px 0px 1px black;
+		font-family: "微软雅黑";
+		color: gray;
+		dt{
+			text-indent: -0.4rem;
+				padding-left: 0.4rem;
+		}
+		img{
+			width: 15%;
+			box-shadow: none;
+		}
+	}
+	img{
+		width: 100%;
+		box-shadow: 0px 0px 1px black;
+
+	}
+}
+
+#sec .li_wd{
+	font-family: "微软雅黑";
+	.gyw{
+		font-size: 20px;
+		color: #333;
+		font-weight: bold;
+	}
+	.abt{
+		font-weight: 18px;
+	}
+	dl{
+		width: 100%;
+		dt{
+			width: 100%;
+			margin-top: 0.2rem;
+			color: gray;
+			span{
+				padding:0 0.1rem ;
+				background: grey;
+				margin-right: 0.1rem;
+				color: #fff;
+				border-radius:3px ;
+			}
+			
+			img{
+				width: 100%;
+			}
 		}
 	}
 }
+
+
+
+/*swiper部分*/
 html{
 	height: 100%;
 	width: 100%;
+	font-size: 100px;
 }
 body{
 	width: 100%;
@@ -55,6 +191,71 @@ body{
 		.swiper-slide{
 			width: 100%;
 			height: 100%;
+			position: relative;
+			color: #FFFFFF;
+			background: linear-gradient(#434A54 65%,#656D7A 65%);
+			font-family: "微软雅黑";
+			#grjl{
+				color: #23A2D2;
+				position: absolute;
+				font-size: 45px;
+				width: 100%;
+				left: 0;
+				top: 10%;
+			} 
+			#rn{
+				font-size: 25px;
+				position: absolute;
+				width: 100%;
+				top: 25%;
+				left: 0;
+			}
+			#xwg{
+				font-size: 35px;
+				position: absolute;
+				width: 100%;
+				top: 50%;
+				left: 0;
+			}
+			#xp{
+				width: 60%;
+				height: 35%;
+				overflow: hidden;
+				position: absolute;
+				top: 15%;
+				left: 20%;
+				border-radius:50% ;
+				img{
+					width: 200%;
+					position: absolute;
+					left: -50%;
+					top: 0;
+				}
+			}	
+			#gcs{
+				font-size: 30px;
+				position: absolute;
+				width: 100%;
+				bottom: 20%;
+				left: 0;
+				font-weight: bold;
+			}
+			
+			#enter{
+				position: absolute;
+				width: 100%;
+				border: none;
+				background: transparent;
+				bottom: 10%;
+				font-size: 30px;
+				color: #fff;
+				font-family: "微软雅黑";
+				font-weight: bold;
+			}
 		}
 	}
 }
+
+
+
+	

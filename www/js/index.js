@@ -62,6 +62,9 @@
 
 	$("#myIscroll").hide();
 
+
+
+	//进入按钮点击事件
 	$('#enter').tap(function() {
 		$(".swiper-container").hide();
 		$("#myIscroll").show();
@@ -69,56 +72,187 @@
 		$.post('/api/skill', {}, function(data) {
 			for(var i = 0; i < data.length; i++) {
 				//				console.log(data[i]);
-				var li = "<li><dl><dt>标题：" + data[i].category + "</dt><dt>掌握程度：" +
-					data[i].level + "</dt><dt>内容：" +
-					data[i].name + "</dt><dt>时间" +
-					data[i].time + "</dt></dl></li>";
+				var li = "<li class='li_jn'>"+
+							"<div><img src='"+data[i].img+"'/></div>"+
+							"<dl>"+
+								"<dt>" +data[i].category + "：</dt>"+
+								"<dt>掌握程度：" +data[i].level + "</dt>"+
+								"<dt>内容：" +data[i].name + "</dt>"+
+								"<dt>时间：" +data[i].time + "</dt>"+
+							"</dl></li>";
 				$("#sec").append(li);
 			}
-			var IScroll = __webpack_require__(8);
-			var myScroll;
-			myScroll = new IScroll('#wrapper', {
-				mouseWheel: true
-			});
-			document.addEventListener('touchmove', function(e) {
-				e.preventDefault();
-			}, false);
+			setTimeout(function(){
+				var IScroll = __webpack_require__(8);
+				var myScroll;
+				myScroll = new IScroll('#wrapper', {
+					mouseWheel: true
+				});
+				document.addEventListener('touchmove', function(e) {
+					e.preventDefault();
+				}, false);
+			},100)
 		})
 	})
-
+	//技能点击事件
+	$('#jn').tap(function(){
+		$('#sec').html('');
+		$.post('/api/skill', {}, function(data) {
+			for(var i = 0; i < data.length; i++) {
+				//				console.log(data[i]);
+				var li = "<li class='li_jn'>"+
+							"<div><img src='"+data[i].img+"'/></div>"+
+							"<dl>"+
+								"<dt>" +data[i].category + "：</dt>"+
+								"<dt>掌握程度：" +data[i].level + "</dt>"+
+								"<dt>内容：" +data[i].name + "</dt>"+
+								"<dt>时间：" +data[i].time + "</dt>"+
+							"</dl></li>";
+				$("#sec").append(li);
+			}
+			setTimeout(function(){
+				var IScroll = __webpack_require__(8);
+				var myScroll;
+				myScroll = new IScroll('#wrapper', {
+					mouseWheel: true
+				});
+				document.addEventListener('touchmove', function(e) {
+					e.preventDefault();
+				}, false);
+			},100)
+		})
+	})
+	//项目点击事件
 	$('#xm').tap(function() {
 		$('#sec').html('');
 		$.post('/api/project', {}, function(data) {
 			for(var i = 0; i < data.length; i++) {
 				//				console.log(data[i]);
-				var li = "<li><dl><dt>项目名称：" + data[i].category + "</dt><dt>项目简介：" +
-					data[i].description + "</dt><dt>项目周期：" +
-					data[i].detail + "</dt><dt>项目所属公司：" +
-					data[i].name + "</dt><dt>所运用的技能：" +
-					data[i].tech + "</dt><dt>网址：" +
-					data[i].url + "</dt></dl></li>";
+				var li = "<li class='li_xm'>"+
+							"<div>"+
+							"<div><img src='"+data[i].img+"' /></div>"+
+							"<dl>"+
+							"<dt>项目名称：" + data[i].category + "</dt>"+
+							"<dt>简介：" +data[i].description + "</dt>"+
+							"</dl>"+
+							"</div>"+
+							"<img src='"+data[i].image+"' />"+
+							"<dl>"+
+							"<dt>周期：" +data[i].detail + "</dt>"+
+							"<dt>所属公司：" +data[i].name + "</dt>"+
+							"<dt>运用：" +data[i].tech + "</dt>"+
+							"<dt>网址：" +data[i].url + "</dt>"+
+						"</dl></li>";
 				$("#sec").append(li);
 			}
+			setTimeout(function(){
+				var IScroll = __webpack_require__(8);
+				var myScroll;
+				myScroll = new IScroll('#wrapper', {
+					mouseWheel: true
+				});
+				document.addEventListener('touchmove', function(e) {
+					e.preventDefault();
+				}, false);
+			},100)
 		})
 	})
-	$.post("http://459633095.applinzi.com/php/getsign.php", {
-		url: window.location.href
-	}, function(data) {
-		pos = data.indexOf('}');
-		dataStr = data.substring(0, pos + 1);
-		objData = JSON.parse(dataStr);
-		console.log(dataStr);
-		wx.config({
-			debug: true,
-			appId: objData.appId,
-			timestamp: objData.timestamp,
-			nonceStr: objData.nonceStr,
-			signature: objData.signature,
-			jsApiList: [
-				'chooseImage'
-			]
+
+	//经历点击事件
+	$('#jl').tap(function() {
+		$('#sec').html('');
+		$.post('/api/work', {}, function(data) {
+			for(var i = 0; i < data.length; i++) {
+				//				console.log(data[i]);
+				var li = "<li class='li_xm'>"+
+							"<div>"+
+							"<div><img src='"+data[i].img+"' /></div>"+
+							"<dl>"+
+							"<dt>公司：" +data[i].name + "</dt>"+
+							"<dt>公司性质：" + data[i].category + "</dt>"+
+							"</dl>"+
+							"</div>"+
+							"<img src='"+data[i].image+"' />"+
+							"<dl>"+
+							"<dt>工作时间：" +data[i].time + "</dt>"+
+							"<dt>职务：" +data[i].posts + "</dt>"+
+							"<dt>兼职：" +data[i].reportto + "</dt>"+
+							"<dt>公司规模：" +data[i].peoples + "</dt>"+
+							"<dt>公司官网：" +data[i].url + "</dt>"+
+						"</dl></li>";
+				$("#sec").append(li);
+			}
+			setTimeout(function(){
+				var IScroll = __webpack_require__(8);
+				var myScroll;
+				myScroll = new IScroll('#wrapper', {
+					mouseWheel: true
+				});
+				document.addEventListener('touchmove', function(e) {
+					e.preventDefault();
+				}, false);
+			},100)
 		})
 	})
+
+	//我的点击事件
+	$('#wd').tap(function() {
+		$('#sec').html('');
+		$.post('/api/my', {}, function(data) {
+			for(var i = 0; i < data.length; i++) {
+				//				console.log(data[i]);
+				var li = "<li class='li_wd'>"+
+							"<dl>"+
+							"<dt class='gyw'>关于我</dt>"+
+							"<dt class='abt'>About me</dt>"+
+							"<dt><img src='"+data[i].img+"'></dt>"+
+							"<dt><span>姓名</span>"+data[i].name+"</dt>"+
+							"<dt><span>毕业院校</span>"+data[i].school+"</dt>"+
+							"<dt><span>专业</span>"+data[i].zhuye+"</dt>"+
+							"<dt><span>生日</span>"+data[i].birthday+"</dt>"+
+							"<dt><span>名族</span>"+data[i].mz+"</dt>"+
+							"<dt><span>政治面貌</span>"+data[i].zzmm+"</dt>"+
+							"<dt><span>现居地</span>"+data[i].xjd+"</dt>"+
+							"<dt><span>籍贯</span>"+data[i].jg+"</dt>"+
+							"<dt><span>兴趣爱好</span>"+data[i].hobby+"</dt>"+
+							"<dt><span>工作期望</span>"+data[i].gzqw+"</dt>"+
+							"<dt><span>联系方式</span></dt>"+
+							"<dt><span>e-mail</span>"+data[i].email+"</dt>"+
+							"<dt><span>qq号</span>"+data[i].qq+"</dt>"+
+							"<dt><span>手机号</span>"+data[i].phone+"</dt>"+
+						"</dl></li>";
+				$("#sec").append(li);
+			}
+			setTimeout(function(){
+				var IScroll = __webpack_require__(8);
+				var myScroll;
+				myScroll = new IScroll('#wrapper', {
+					mouseWheel: true
+				});
+				document.addEventListener('touchmove', function(e) {
+					e.preventDefault();
+				}, false);
+			},100)
+		})
+	})
+	//$.post("http://459633095.applinzi.com/php/getsign.php", {
+	//	url: window.location.href
+	//}, function(data) {
+	//	pos = data.indexOf('}');
+	//	dataStr = data.substring(0, pos + 1);
+	//	objData = JSON.parse(dataStr);
+	//	console.log(dataStr);
+	//	wx.config({
+	//		debug: true,
+	//		appId: objData.appId,
+	//		timestamp: objData.timestamp,
+	//		nonceStr: objData.nonceStr,
+	//		signature: objData.signature,
+	//		jsApiList: [
+	//			'chooseImage'
+	//		]
+	//	})
+	//})
 	wx.ready(function() {
 		$('#bt_xc').tap(function() {
 			wx.chooseImage({
