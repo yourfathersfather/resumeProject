@@ -182,6 +182,16 @@ $('#wd').tap(function() {
 		},100)
 	})
 })
+var swiperAnimate = require('./components/swiper/swiper.animate1.0.2.min')
+var swiper = new Swiper('.swiper-container', {
+	onInit: function(swiper) { //Swiper2.x的初始化是onFirstInit
+		swiperAnimate.swiperAnimateCache(swiper); //隐藏动画元素 
+		swiperAnimate.swiperAnimate(swiper); //初始化完成开始动画
+	},
+	onSlideChangeEnd: function(swiper) {
+		swiperAnimate.swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+	}
+})
 //$.post("http://459633095.applinzi.com/php/getsign.php", {
 //	url: window.location.href
 //}, function(data) {
@@ -200,25 +210,15 @@ $('#wd').tap(function() {
 //		]
 //	})
 //})
-wx.ready(function() {
-	$('#bt_xc').tap(function() {
-		wx.chooseImage({
-			count: 1, // 默认9
-			sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-			sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-			success: function(res) {
-				var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-			}
-		});
-	})
-});
-var swiperAnimate = require('./components/swiper/swiper.animate1.0.2.min')
-var swiper = new Swiper('.swiper-container', {
-	onInit: function(swiper) { //Swiper2.x的初始化是onFirstInit
-		swiperAnimate.swiperAnimateCache(swiper); //隐藏动画元素 
-		swiperAnimate.swiperAnimate(swiper); //初始化完成开始动画
-	},
-	onSlideChangeEnd: function(swiper) {
-		swiperAnimate.swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-	}
-})
+//wx.ready(function() {
+//	$('#bt_xc').tap(function() {
+//		wx.chooseImage({
+//			count: 1, // 默认9
+//			sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+//			sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+//			success: function(res) {
+//				var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+//			}
+//		});
+//	})
+//});
