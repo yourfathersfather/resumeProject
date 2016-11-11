@@ -3081,7 +3081,10 @@ body {
     text-align: center;
     color: #FFFFFF;
     font-family: "微软雅黑";
-    font-size: 16px; }
+    font-size: 14px; }
+    #footer div span {
+      display: block;
+      font-size: 23px; }
 
 #header {
   display: flex;

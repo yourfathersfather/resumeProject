@@ -68,7 +68,8 @@
 	$('#enter').tap(function() {
 		$(".swiper-container").hide();
 		$("#myIscroll").show();
-
+		$('#jn').css("color","red");
+		
 		$.post('/api/skill', {}, function(data) {
 			for(var i = 0; i < data.length; i++) {
 				//				console.log(data[i]);
@@ -97,6 +98,10 @@
 	//技能点击事件
 	$('#jn').tap(function(){
 		$('#sec').html('');
+		$('#footer>div').each(function(){
+			$(this).css("color","#fff");
+		})
+		$(this).css("color","red");
 		$.post('/api/skill', {}, function(data) {
 			for(var i = 0; i < data.length; i++) {
 				//				console.log(data[i]);
@@ -125,6 +130,10 @@
 	//项目点击事件
 	$('#xm').tap(function() {
 		$('#sec').html('');
+		$('#footer>div').each(function(){
+			$(this).css("color","#fff");
+		})
+		$(this).css("color","red");
 		$.post('/api/project', {}, function(data) {
 			for(var i = 0; i < data.length; i++) {
 				//				console.log(data[i]);
@@ -161,6 +170,10 @@
 	//经历点击事件
 	$('#jl').tap(function() {
 		$('#sec').html('');
+		$('#footer>div').each(function(){
+			$(this).css("color","#fff");
+		})
+		$(this).css("color","red");
 		$.post('/api/work', {}, function(data) {
 			for(var i = 0; i < data.length; i++) {
 				//				console.log(data[i]);
@@ -198,6 +211,10 @@
 	//我的点击事件
 	$('#wd').tap(function() {
 		$('#sec').html('');
+		$('#footer>div').each(function(){
+			$(this).css("color","#fff");
+		})
+		$(this).css("color","red");
 		$.post('/api/my', {}, function(data) {
 			for(var i = 0; i < data.length; i++) {
 				//				console.log(data[i]);

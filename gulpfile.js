@@ -124,8 +124,8 @@ gulp.src('./src/images/**/*')
 })
 //复制iconfont
 gulp.task('copy-iconfont',function(){
-gulp.src('./src/font_l8z7akp9hdezsemi/**/*')
-	.pipe(gulp.dest('./www/font_l8z7akp9hdezsemi'))
+gulp.src('./src/ux_1478846238_0053916/**/*')
+	.pipe(gulp.dest('./www/ux_1478846238_0053916'))
 })
 
 
@@ -140,7 +140,7 @@ gulp.task('html',function(){
 gulp.task('watch',function(){
   gulp.watch('./src/index.html',['copy-index']);
 	gulp.watch('src/images/*',['copy-images']);
-	gulp.watch('src/font_l8z7akp9hdezsemi/*',['copy-iconfont']);
+	gulp.watch('src/ux_1478846238_0053916/*',['copy-iconfont']);
 	
   var queue = sequence(300);
   watch('src/scripts/**/*.js',{
